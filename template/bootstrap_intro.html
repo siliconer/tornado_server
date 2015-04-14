@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
+    <title>Test</title>
+
+    <!-- Bootstrap -->
+    <link href="/static/css/bootstrap.min.css" rel="stylesheet"> 
+            <!-- <link href="css/bootstrap-table.css" rel="stylesheet">  -->
+
+  <link href="/static/css/bootstrap-table.min.css" rel="stylesheet"> 
+
+    <!-- <link href="css/bootstrap_table.css" rel="stylesheet"> -->
+<script src="/static/js/jquery.min.js"></script>
+<script src="/static/js/bootstrap.min.js"></script>
+<!-- <script src="js/bootstrap-table.min.js"></script> -->
+<script src="/static/js/bootstrap-table.js"></script>
+
+<!-- Latest compiled and minified CSS -->
+
+<!-- Latest compiled and minified JavaScript -->
+
+<!-- Latest compiled and minified Locales -->
+<!-- Documentation extras -->
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="http://cdn.bootcss.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="http://cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+        <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+
+
+
+  </head>
+  <body>
+
+
+
+       <div class="container">
+              <div class="page-header">
+                <h1>SRA</h1>
+<!--                 <p class="lead">Basic grid layouts to get you familiar with building within the Bootstrap grid system.</p>
+ -->           </div>
+
+
+
+              <div role="tabpanel">
+                <!-- Nav tabs -->
+                <ul class="nav nav-tabs" role="tablist">
+                  <li role="presentation"  class="active" ><a href="#home" id="home-tab" aria-controls="home" role="tab" data-toggle="tab">Home</a></li>
+                  <li role="presentation"   ><a href="#browse"  id= "browse-tab" aria-controls="browse" role="tab" data-toggle="tab">Browse</a></li>
+                  <li role="presentation" ><a href="#search"  id= "search-tab" aria-controls="search" role="tab" data-toggle="tab">Search</a></li>
+                </ul>
+                <!-- Tab panes -->
+                <div class="tab-content">
+                  <div role="tabpanel" class="tab-pane active" id="home" aria-labelledby ="home-tab">
+                    <h4> SRA Database ,the beginning of the project  </h4>
+                      <h4>  The Sequence Read Archive (SRA) stores raw sequence data from "next-generation" sequencing technologies including 454, IonTorrent, Illumina, SOLiD, Helicos and Complete Genomics. In addition to raw sequence data, SRA now stores alignment information in the form of read placements on a reference sequence.
+
+                      SRA is NIH’s primary archive of high-throughput sequencing data and is part of the international partnership of archives (INSDC) at the NCBI, the European Bioinformatics Institute and the DNA Database of Japan. Data submitted to any of the three organizations are shared among them.
+                        </h4>
+                  </div>
+
+                  <div role="tabpanel" class="tab-pane" id="browse" aria-labelledby="browse-tab">
+                               <h4>  browse the database</h4>
+                               <!-- <h4></h4> -->
+                            <table data-toggle="table" data-url="sra.json" data-cache="false" data-height="500"  data-response-handler="responseHandler" data-pagination="true"  data-page-size="10"   data-page-list="[5, 10, 20]" >
+                                <thead>
+                                    <tr>
+                                        <th data-field="experiment_id" data-align="right">experiment_id</th>
+                                        <th data-field="title" data-align="center" >title</th>
+                                        <th data-field="submitter_id"  >submitter</th>
+                                       <th data-field="instrument_model" >instrument_model</th>
+
+                                    </tr>
+
+                                </thead>
+                            </table>
+                            <script>
+                                // client side
+                                function responseHandler(res) {
+                                    return  res.response.docs;
+                                }
+                            </script>
+                   </div>
+
+
+                  <div role="tabpanel" class="tab-pane" id="search" aria-labelledby="search-tab">
+                        <h4> input the search words  </h4>
+                    <div class="row">
+                      <form method="post"  action="/search">
+                          <div class="col-lg-9">
+                              <div class="input-group">
+                                <input type="text" class="form-control" placeholder="Search for..." name="searchterm">
+                                <span class="input-group-btn">
+                                  <button class="btn btn-default" type="submit" formmethod="post" formaction="/search">Search</button>
+                                </span>
+                              </div><!-- /input-group -->
+                          </div><!-- /.col-lg-6 -->
+                      </form>
+                  </div>  <!--/row-->
+
+
+                </div>
+
+
+
+      </div>
+  </body>
+
+</html>
