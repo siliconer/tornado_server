@@ -22,11 +22,9 @@ class  IndexHandler(tornado.web.RequestHandler):
       		  self.write("IndexHandler darnit, user! You caused a %d error." % status_code)
 class  SearchHandler(tornado.web.RequestHandler):
 	def  post(self):
-		self.write("searching")
 		search_term = self.get_argument('searchterm')
-		self.write("searching")
-		self.write(search_term);
-		self.render('index.html')
+		# self.write(search_term);
+		self.render('search.html')
 	def write_error(self, status_code, **kwargs):
        		 self.write("SearchHandler darnit, user! You caused a %d error." % status_code)
 class WrappHandler(tornado.web.RequestHandler):

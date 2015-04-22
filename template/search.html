@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
+    <title>Test</title>
+
+    <!-- Bootstrap -->
+    <link href="/static/css/bootstrap.min.css" rel="stylesheet"> 
+            <!-- <link href="css/bootstrap-table.css" rel="stylesheet">  -->
+
+  <link href="/static/css/bootstrap-table.min.css" rel="stylesheet"> 
+
+    <!-- <link href="css/bootstrap_table.css" rel="stylesheet"> -->
+<script src="/static/js/jquery.min.js"></script>
+
+<script src="/static/js/bootstrap.min.js"></script>
+<!-- <script src="js/bootstrap-table.min.js"></script> -->
+<script src="/static/js/bootstrap-table.js"></script>
+
+<!-- Latest compiled and minified CSS -->
+
+<!-- Latest compiled and minified JavaScript -->
+
+<!-- Latest compiled and minified Locales -->
+<!-- Documentation extras -->
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="http://cdn.bootcss.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="http://cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+        <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+  </head>
+  <body>
+
+
+       <div class="container">
+              <div class="page-header">
+                <h3>Search Page</h3>
+<!--                 <p class="lead">Basic grid layouts to get you familiar with building within the Bootstrap grid system.</p> data-show-header="false"
+ -->           </div>
+
+                  <table data-toggle="table" data-url="/static/data.json" data-cache="false" data-height="500"  data-response-handler="responseHandler" data-pagination="true"  data-page-size="10"   data-page-list="[5, 10, 20]" >
+                                <thead>
+                                    <tr>
+                                        <th data-field="experiment_id" data-align="center"  data-visible="false">
+                                          <a href="https://github.com/wenzhixin/multiple-select">experiment_id</a>
+                                          </th>
+                                        <!-- <th data-field="title" data-align="center"  >title</th> -->
+                                        <th data-field="submitter_id" data-formatter="search" >submitter</th>
+                                       <!-- <th data-field="instrument_model" >instrument_model</th> -->
+                                    </tr>
+
+                                </thead>
+                            </table>                        
+
+                        <script>
+                                // client side
+                                function responseHandler(res) {
+                                    return  res.response.docs;
+                                }
+
+                                // function 
+                            </script>
+
+
+
+
+
+
+       </div>
+</body>
+</html>
