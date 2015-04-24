@@ -6,7 +6,7 @@ import tornado.options
 import tornado.httpserver
 import os 
 import sys
-
+import json
 from application import application
 
 from tornado.options import define,options
@@ -31,12 +31,35 @@ class WrappHandler(tornado.web.RequestHandler):
 	def post(self):
 		text = self.get_argument('text')
 		self.write(text)
+class  IdHandler(tornado.web.RequestHandler):
+	def get(self,input_word):
+		print input_word
+		json_file = os.getcwd()+'/static/ERX081395.json'
+		json_body = json.load(open(json_file))['response']['docs'][0]
+		experiment_id=json_body['experiment_id']
+		title = json_body['title']
+		sample_id = json_body['experiment_id']
+		library_selection = json_body['library_selection']
+		design_description = json_body['design_description']
+		study_bioproject_id = json_body['study_bioproject_id']
+		library_name = json_body['library_name']
+		library_source= json_body['library_source']
+		library_strategy = json_body['library_strategy']
+		run_id = json_body['run_id']
+		submitter_id = json_body['submitter_id']
+		instrument_model = json_body['instrument_model']
+		study_ref = json_body['study_ref']
+		self.render("id.html",library_selection=library_selection,experiment_id=experiment_id,sample_id=sample_id,design_description=design_description,study_bioproject_id=study_bioproject_id,library_name=library_name,library_source=library_source,title=title,library_strategy=library_strategy,run_id=run_id,submitter_id=submitter_id,instrument_model=instrument_model,study_ref=study_ref)
+
+		# http://192.168.0.108:8983/solr/sra_collection_shard1_replica1/select?q=*ERX081395*&wt=json&indent=true
+
 def main():
 	tornado.options.parse_command_line()
 	application = tornado.web.Application(
 		handlers=[(r'/',IndexHandler),
 		(r'/search',SearchHandler),
-		(r'/wrap',WrappHandler)] ,
+		(r'/wrap',WrappHandler),
+		(r'/id/(\w+)',IdHandler)] ,
    	    	template_path=os.path.join(os.path.dirname(__file__),"template"),
   	    	static_path=os.path.join(os.path.dirname(__file__),"static"),	
   	    	debug = True

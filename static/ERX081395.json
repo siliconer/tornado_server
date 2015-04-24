@@ -1,0 +1,26 @@
+{
+  "responseHeader":{
+    "status":0,
+    "QTime":40,
+    "params":{
+      "indent":"true",
+      "q":"*ERX081395*",
+      "wt":"json"}},
+  "response":{"numFound":1,"start":0,"docs":[
+      {
+        "library_selection":"RANDOM",
+        "experiment_id":"ERX081395",
+        "sample_id":"0",
+        "design_description":"Illumina sequencing of library 3518544, constructed from sample accession ERS102590 for study accession ERP001277.  This is part of an Illumina multiplexed sequencing run (6786_8).  This submission includes reads tagged with the sequence GTTGTCGG.",
+        "study_bioproject_id":"0",
+        "id":"row4468",
+        "library_name":"3518544",
+        "library_source":"GENOMIC",
+        "title":"",
+        "library_strategy":"CLONE",
+        "run_id":"ERR103959",
+        "submitter_id":"SC",
+        "instrument_model":"Illumina HiSeq 2000",
+        "study_ref":"ERP001277",
+        "_version_":1499226032343875585}]
+  }}

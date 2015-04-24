@@ -39,10 +39,27 @@
   <body>
 
        <div class="container">
-              <div class="page-header">
-                <h3>Search</h3>
-<!--                 <p class="lead">Basic grid layouts to get you familiar with building within the Bootstrap grid system.</p>
- -->           </div>
+                <h3>ID Page</h3>
+                <p><hr></p>
+                 <p></p>
+                <p><b>{{experiment_id}}</b>    <b>{{title}}</b></p>
+                <p><b>Accession</b>:{{experiment_id}}</p>
+                <p><b>Experiment design</b>:{{design_description}}</p>
+                <p><b>Submitted by</b>:{{submitter_id}}</p>
+                <p><b>Study summary</b>:{{study_ref}} </p>
+                          <p> <b>study bioProject</b>:{{study_bioproject_id}}  </p>
+                <p><b>Sample</b>:{{sample_id}}</p>          
+                <div class="bs-example" data-example-id="simple-ul">    
+                <p><b>Library:</b></p>
+                <ul>
+                             <li>Library name: {{library_name}}</li>
+                             <li>Library source: {{library_source}}</li>
+                             <li>Library strategy: {{library_strategy}}</li>
+                             <li>library selection: {{library_selection}}</li>
+                 </ul>
+                </div>
+                <p><b>Platform</b>: {{instrument_model}}</p>
+                <p><b>Run_Id</b>:{{run_id}}</p>
        </div>
 </body>
 </html>
