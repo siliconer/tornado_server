@@ -26,12 +26,15 @@ class  SearchHandler(tornado.web.RequestHandler):
 	def  post(self):
 		searchterm = self.get_argument('searchterm')
 		query_url  = ' http://192.168.0.108:8983/solr/sra_collection_shard1_replica1/select?q=*' + searchterm + '*&wt=json&indent=true'
+		print query_url + ' search'	
 		response = simplejson.load(urlopen(query_url))
-		file = open(os.getcwd()+"/static/search.json","w")
+		print response
+		out_file = os.getcwd() + '/static/search.json'
+		file = open(out_file,"w")
        		file.write(str(response))
 		# print reponse
-		# self.write(search_term);
-		self.render('search.html',json=file)
+		self.render('search.html',json='/static/search.json')
+
 	def write_error(self, status_code, **kwargs):
        		 self.write("SearchHandler darnit, user! You caused a %d error." % status_code)
 class WrappHandler(tornado.web.RequestHandler):
