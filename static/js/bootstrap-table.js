@@ -76,14 +76,14 @@
 
     var calculateObjectValue = function (self, name, args, defaultValue) {
         if (name === "search") {
-           var  url_prefix="http://127.0.0.1:8888/id/" ;
+           var  url_prefix="http://192.168.108:8888/id/" ;
             var    id = args[1]["experiment_id"] ;
            var  url = url_prefix+id ; 
           defaultValue = "<a href="+url+">"+defaultValue+"</a>" ;
             return defaultValue;
         }
         if (name === "browse") {
-           var  url_prefix="http://127.0.0.1:8888/id/" ;
+           var  url_prefix="http://192.168.0.108:8888/id/" ;
             var    id = args[1]["experiment_id"] ;
            var  url = url_prefix+id ; 
           defaultValue = "<a href="+url+">"+defaultValue+"</a>" ;

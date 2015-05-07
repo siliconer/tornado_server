@@ -17,24 +17,25 @@ define("port",default=8888,help="run on th given port",type=int)
 class  IndexHandler(tornado.web.RequestHandler):
 	def get(self):
 		print '/'
-	 	# lst = ["python","www.itdiffer.com","qiwsir@gmail.com"]
-		# self.render("index_beginning.html", info=lst)
 		self.render("bootstrap_intro.html")
 	def write_error(self, status_code, **kwargs):
       		  self.write("IndexHandler darnit, user! You caused a %d error." % status_code)
 class  SearchHandler(tornado.web.RequestHandler):
 	def  post(self):
 		searchterm = self.get_argument('searchterm')
-		query_url  = ' http://192.168.0.108:8983/solr/sra_collection_shard1_replica1/select?q=*' + searchterm + '*&wt=json&indent=true'
+		query_url  = ' http://192.168.0.108:8983/solr/sra_collection_shard1_replica1/select?q=*' + searchterm + '*&rows=100000&wt=json'
 		print query_url + ' search'	
 		response = simplejson.load(urlopen(query_url))
 		print response
 		out_file = os.getcwd() + '/static/search.json'
-		file = open(out_file,"w")
-       		file.write(str(response))
+		with open(out_file,"w") as outfile:
+			json.dump(response,outfile,indent=4)
+		#file = open(out_file,"w")
+       		#file.write(str(response))
 		# print reponse
+		#file.close()
 		self.render('search.html',json='/static/search.json')
-
+		#self.render('search.html')	
 	def write_error(self, status_code, **kwargs):
        		 self.write("SearchHandler darnit, user! You caused a %d error." % status_code)
 class WrappHandler(tornado.web.RequestHandler):
