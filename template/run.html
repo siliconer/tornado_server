@@ -50,7 +50,8 @@
                              <td>row 2, cell 2</td>
                           </tr>
                         </table>​
-
+             
+                        <script>
                         function myFun(e){ 
                             alert(e.target.innerText); //current cell
                             click_var = e.target.innerText;
@@ -59,15 +60,15 @@
                             $.post( "/srun", click_var,function( data ) {
                                   $( "#p" ).html( data );
                             });
-                              <!-- var posting = $.post( url, { s: term } ); -->
+                              // <!-- var posting = $.post( url, { s: term } ); -->
              
-                          <!--   // Put the results in a div
-                            posting.done(function( data ) {
-                              var content = $( data ).find( "#content" );
-                              $( "#result" ).empty().append( content );
-                            }); -->
+                          // <!--   // Put the results in a div
+                          //   posting.done(function( data ) {
+                          //     var content = $( data ).find( "#content" );
+                          //     $( "#result" ).empty().append( content );
+                          //   }); -->
                         }​
-
+                        </script>
 
               </div>
               <div class="col-md-4">
