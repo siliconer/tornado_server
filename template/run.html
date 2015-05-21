@@ -65,9 +65,9 @@
                                 // alert(e.target.parentNode.innerText); //Current row.
 
 
-                                var posting = $.post( "/srun", click_var); 
+                                var getting = $.get( "/srun", click_var); 
                  
-                                posting.done(function( data ) {
+                                getting.done(function( data ) {
                                   // var content = $( data ).find( "#content" );
                                       $( "#result" ).empty().append( data );
                                 }); 
