@@ -70,7 +70,7 @@ class  IdHandler(tornado.web.RequestHandler):
 
 class  RunHandler(tornado.web.RequestHandler):
 	def get(self,input_word):
-		read_info  = parse_stargate()
+		read_info  = parse_stargate(input_word)
 		print read_info
 
 
