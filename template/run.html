@@ -38,7 +38,7 @@
   </head>
   <body>
     <div class="row">
-              <div class="col-md-8">
+              <div class="col-md-4">
              <!-- //http://www.dotnetlearners.com/javascript/find%20table%20cell%20value%20on%20cell%20(table)%20click%20using%20javascript.aspx -->
                         <table id="tableID" onclick="myFun(event)" border="1">
                           <tr>
@@ -51,28 +51,38 @@
                           </tr>
                         </table>​
              
-                        <script>
-                        function myFun(e){ 
-                            alert(e.target.innerText); //current cell
-                            click_var = e.target.innerText;
+                        <script language="javascript">
 
-                            alert(e.target.parentNode.innerText); //Current row.
-                            $.post( "/srun", click_var,function( data ) {
-                                  $( "#p" ).html( data );
-                            });
-                              // <!-- var posting = $.post( url, { s: term } ); -->
-             
-                          // <!--   // Put the results in a div
-                          //   posting.done(function( data ) {
-                          //     var content = $( data ).find( "#content" );
-                          //     $( "#result" ).empty().append( content );
-                          //   }); -->
-                        }​
+                        $('#tableID').click(function(e){
+                              alert($(e.target).text());   
+                              click_var = $(e.target).text();
+ //http://api.jquery.com/jquery.post/
+                                // alert(e.target.parentNode.innerText); //Current row.
+                                $.post( "/srun", click_var,function( data ) {
+                                      $( "#p" ).html( data );
+                                }); 
+                          })
+ //                            function myFun(e){ 
+ //                                alert(e.target.innerText); //current cell
+ //                                click_var = e.target.innerText;
+ // //http://api.jquery.com/jquery.post/
+ //                                alert(e.target.parentNode.innerText); //Current row.
+ //                                $.post( "/srun", click_var,function( data ) {
+ //                                      $( "#p" ).html( data );
+ //                                });
+                                  // <!-- var posting = $.post( url, { s: term } ); -->
+                 
+                              // <!--   // Put the results in a div
+                              //   posting.done(function( data ) {
+                              //     var content = $( data ).find( "#content" );
+                              //     $( "#result" ).empty().append( content );
+                              //   }); -->
+                            // }​
                         </script>
 
               </div>
-              <div class="col-md-4">
-                  <p>0</p>
+              <div class="col-md-8">
+                  <p>bio read area</p>
               </div>
 </div>
    
