@@ -37,22 +37,44 @@
     <!-- Include all compiled plugins (below), or include individual files as needed -->
   </head>
   <body>
-    <!-- //http://www.dotnetlearners.com/javascript/find%20table%20cell%20value%20on%20cell%20(table)%20click%20using%20javascript.aspx -->
-            <table id="tableID" onclick="myFun(event)" border="1">
-              <tr>
-                 <td>row 1, cell 1</td>
-                 <td>row 1, cell 2</td>
-              </tr>
-              <tr>
-                 <td>row 2, cell 1</td>
-                 <td>row 2, cell 2</td>
-              </tr>
-            </table>​
+    <div class="row">
+              <div class="col-md-8">
+             <!-- //http://www.dotnetlearners.com/javascript/find%20table%20cell%20value%20on%20cell%20(table)%20click%20using%20javascript.aspx -->
+                        <table id="tableID" onclick="myFun(event)" border="1">
+                          <tr>
+                             <td>1757</td>
+                             <td>1758</td>
+                          </tr>
+                          <tr>
+                             <td>row 2, cell 1</td>
+                             <td>row 2, cell 2</td>
+                          </tr>
+                        </table>​
 
-            function myFun(e){ 
-                alert(e.target.innerText); //current cell
-                alert(e.target.parentNode.innerText); //Current row.
-            }​
+                        function myFun(e){ 
+                            alert(e.target.innerText); //current cell
+                            click_var = e.target.innerText;
+
+                            alert(e.target.parentNode.innerText); //Current row.
+                            $.post( "/srun", click_var,function( data ) {
+                                  $( "#p" ).html( data );
+                            });
+                              <!-- var posting = $.post( url, { s: term } ); -->
+             
+                          <!--   // Put the results in a div
+                            posting.done(function( data ) {
+                              var content = $( data ).find( "#content" );
+                              $( "#result" ).empty().append( content );
+                            }); -->
+                        }​
+
+
+              </div>
+              <div class="col-md-4">
+                  <p>0</p>
+              </div>
+</div>
+   
 
 </body>
 </html>
