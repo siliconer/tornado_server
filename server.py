@@ -10,7 +10,7 @@ import json
 from application import application
 from urllib2 import *
 import simplejson
-
+from stargate import parse_stargate
 from tornado.options import define,options
 define("port",default=8888,help="run on th given port",type=int)
 
@@ -68,13 +68,21 @@ class  IdHandler(tornado.web.RequestHandler):
 
 		# http://192.168.0.108:8983/solr/sra_collection_shard1_replica1/select?q=*ERX081395*&wt=json&indent=true
 
+def Runhandler(tornado.web.RequestHandler):
+	def get(self.input_word):
+		read_info  = parse_stargate()
+		print read_info
+
+
+
 def main():
 	tornado.options.parse_command_line()
 	application = tornado.web.Application(
 		handlers=[(r'/',IndexHandler),
 		(r'/search',SearchHandler),
 		(r'/wrap',WrappHandler),
-		(r'/id/(\w+)',IdHandler)] ,
+		(r'/id/(\w+)',IdHandler),
+		(r'/run/(\w+)',RunHandler)] ,
    	    	template_path=os.path.join(os.path.dirname(__file__),"template"),
   	    	static_path=os.path.join(os.path.dirname(__file__),"static"),	
   	    	debug = True
