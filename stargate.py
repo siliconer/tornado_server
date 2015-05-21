@@ -40,8 +40,5 @@ def parse_stargate():
 
 
 		rowKey = base64.b64decode(row['key'])
-		print 'value'
-		print value 
 	return base64.b64decode(value)
 
-parse_stargate()

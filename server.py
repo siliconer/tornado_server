@@ -68,8 +68,8 @@ class  IdHandler(tornado.web.RequestHandler):
 
 		# http://192.168.0.108:8983/solr/sra_collection_shard1_replica1/select?q=*ERX081395*&wt=json&indent=true
 
-class  Runhandler(tornado.web.RequestHandler):
-	def get(self.input_word):
+class  RunHandler(tornado.web.RequestHandler):
+	def get(self,input_word):
 		read_info  = parse_stargate()
 		print read_info
 
