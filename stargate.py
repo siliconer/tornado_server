@@ -10,12 +10,13 @@ def issuccessful(request):
 def parse_stargate(query_str):
 	tablename = 'SRR1514737'
 	# query_row_key = 'SRR1514737.1757.1'
-	query_row_key_one = query_str + '.1'
-	query_row_key_two = query_str+  '.2'
+	query_row_key_one = 'SRR1514737.'+query_str + '.1'
+	query_row_key_two = 'SRR1514737.'+query_str+  '.2'
 	read_one = query(query_row_key_two)
 	read_two = query(query_row_key_one)
 	return read_one,read_two 
 def query(query_row_key):
+	tablename = 'SRR1514737'
 	column_name = 'read'
 	baseurl =  'http://localhost:7060'
 	request = requests.get(baseurl + "/" + tablename +"/"+query_row_key+'/'+ column_name, headers={"Accept" : "application/json"})
