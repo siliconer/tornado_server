@@ -73,10 +73,10 @@ class  SRRRunHandler(tornado.web.RequestHandler):
 		print 'srr'
 		print str(self.request.body)+' a'
 #		input_word=self.get_argument('td')
-		input_word = tornado.escape.json_decode(self.request.body)
-		print input_word
-		read_info  = parse_stargate(str(input_word))
-		#self.write('read_info')
+#		input_word = tornado.escape.json_decode(self.request.body)
+		input_word = self.request.body	
+		print input_word	
+		read_info  = parse_stargate(str(input_word).split('.')[1])
 		self.write({'read_info':read_info})
 		self.flush()
 		self.finish()

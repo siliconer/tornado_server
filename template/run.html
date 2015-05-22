@@ -43,25 +43,50 @@
   <body>
     <h2>SRR Read Page  <div class="run_id">{{run_id}}<div></h2>
     <div class="row">
-              <div class="col-md-4">
+              <div class="col-md-3">
               <div id="page_slider"></div>
              <!-- //http://www.dotnetlearners.com/javascript/find%20table%20cell%20value%20on%20cell%20(table)%20click%20using%20javascript.aspx -->
                         <table id="tableID" class="table" border="1">
                         </table>​
-             
-                   
+	   
 
               </div>
-              <div class="col-md-4">
-                        <div id="result"></div>
-              </div>
+              <div class="col-md-6">
+                        <div id="result">
+<div class="panel panel-default">
+
+ <div class="panel-heading">
+    <h3 class="panel-title">Read 1</h3>
+  </div>
+  <div id="read1" class="panel-body" style="word-wrap:break-word">
+    Panel content
+    page 1 
+	aapage2
+	<br/>
+	<br/>
+	page 3
+	<br/>
+page5
+  </div>
+</div>
+<div class="panel panel-default" style="word-wrap:break-word">
+
+ <div class="panel-heading">
+    <h3 class="panel-title">Read 2</h3>
+  </div>
+  <div id = "read2" class="panel-body">
+  </div>
+</div>
+		</div>
+             </div>
                    <script language="javascript">
                 $(document).ready(
+
                                function tableCreate(){
                                         // var body = document.body,
                                         tbl  =  document.getElementById('tableID');
                                         // tbl.style.width  = '50px';
-
+					run_id = document.querySelectorAll(".run_id")[0].childNodes[0].nodeValue
                                         for(var i = 0; i < 10; i++){
                                             var tr = tbl.insertRow();
                                             for(var j = 0; j < 1; j++){
@@ -70,44 +95,42 @@
                                                       } else {
                                                           var td = tr.insertCell();
                                                           row_index =  run_id.toString()+'.'+i.toString()
-                                                          td.appendChild(document.createTextNode(i));
+                                                          td.appendChild(document.createTextNode(row_index));
                                                           td.style.border = "1px solid black";
                                                           // if(i == 1 && j == 1){
                                                           //     td.setAttribute('rowSpan', '2');
                                                           // }
                                                       }
-                                              }
+                                             }
                                         }
-                                        // body.appendChild(tbl);
+			        	run_id = document.querySelectorAll(".run_id")[0].childNodes[0].nodeValue
+                                	click_var = run_id + '.0';
+                                	var posting = $.post( "/srun",click_var);
+                                	posting.done(function( data ) {
+
+                                        var read1 = data['read_info'][0]
+                                        console.log(read1);
+                                        var read2 = data['read_info'][1]
+                                      $("#read1").empty().append(read1);
+                                      $("#read2").empty().append(read2);
                                 }
+		});
                 );
                    $(function() {
+
  
                       $("#page_slider").bs_pagination({
                           totalPages: {{run_count}}
                         });
                        
                       });
-                    // $("#page_slider").bs_pagination({
-                    //     onLoad: function(event, data) {
-                    //             tbl  =  document.getElementById('tableID');
-                    //             currentPage = data.currentPage
-                    //             row_length = tbl.rows.length
-                    //             for (i =0;i<row_length ;i++ ) {
-                    //                   tbl.rows[i].cells[0].innerHTML = str(currentPage*10 +  int(tbl.rows[i].cells[0].innerHTML)) ;
-                    //             }
-
-                    //       // your code here e.g.
-                    //             // console.log('Current page is: ' + currentPage.col + '. ' + rowsPerPage + ' are displayed per page.');
-                    //     }
-                    //   });
 
                    $("#page_slider").bs_pagination({
-			run_id = {{run_id}}
                         onChangePage: function(event, data) {
                                 tbl  =  document.getElementById('tableID');
                                 currentPage = data.currentPage
                                 row_length = tbl.rows.length
+				run_id =document.querySelectorAll(".run_id")[0].childNodes[0].nodeValue
                                 for (i =0;i<row_length ;i++ ) {
 				      row_index = tbl.rows[i].cells[0].innerHTML
                                       tbl.rows[i].cells[0].innerHTML = run_id.toString()+'.'+(currentPage*10 +  parseInt(row_index.split('.')[1],10) ).toString();
@@ -132,14 +155,22 @@
 
 				console.log("data")	;
 				console.log(data['read_info']);
-                                  // var content = $( data ).find( "#content" );
-                                      $( "#result" ).empty().append( data['read_info'] );
+                                  // var content = $( data ).find( "#content" );a
+					var read1 = data['read_info'][0]	
+		//			read1 = wordwrap(read1,60,'<br/>');
+					console.log(read1);
+					var read2 = data['read_info'][1]				
+		//			read2 = wordwrap(read2,60,'<br/>');
+				      $("#read1").empty().append(read1);
+				      $("#read2").empty().append(read2);
+                                     //$( "#result" ).empty().append( data['read_info'] );
                                 }); 
 
 
 
 
                           })
+
  //                            function myFun(e){ 
  //                                alert(e.target.innerText); //current cell
  //                                click_var = e.target.innerText;
