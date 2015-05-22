@@ -96,6 +96,24 @@ class RunHandler(tornado.web.RequestHandler):
 		run_id = 'SRR1514737'
 		run_count = '120'
 		self.render("run.html",run_id = run_id,run_count =run_count) 
+class SubmitHandler(tornado.web.RequestHandler):
+	def post(self):
+		platform = self.get_argument(Platform)
+		library_strategy  = self.get_argument(title)
+		bioproject_id = self.get_argument(BioProjectId)
+		biosample_id= self.get_argument(BioSampleId)
+		experiement_design = self.get_argument(experiement_design)
+		library_name = self.get_argument(library_name)
+		Strategy= self.get_argument(Strategy)
+		Selection= self.get_argument(Selection)
+		Source= self.get_argument(Source)
+		print platform 
+		
+	
+
+		# pass
+
+
 
 def main():
 	tornado.options.parse_command_line()
@@ -106,7 +124,8 @@ def main():
 		(r'/id/(\w+)',IdHandler),
 		(r'/srun',SRRRunHandler),
 		(r'/srun/(\w+)',SRRRunHandler),
-		(r'/run/(\w+)',RunHandler)] ,
+		(r'/run/(\w+)',RunHandler),
+		(r'/submit',SubmitHandler)] ,
    	    	template_path=os.path.join(os.path.dirname(__file__),"template"),
   	    	static_path=os.path.join(os.path.dirname(__file__),"static"),	
   	    	debug = True

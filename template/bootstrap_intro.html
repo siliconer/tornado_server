@@ -109,8 +109,55 @@
                   </div>  <!--/row-->
 		
 		<h4>Any Entrez request. Examples: "human", "SRP028607"</h4>
-                </div>
+                </div>  
 
+
+                <!-- //http://www.ncbi.nlm.nih.gov/books/NBK47529/ -->
+                  <div role="tabpanel" class="tab-pane active" id="home" aria-labelledby ="submit-tab">
+                              <h3> Submit Data  </h3>
+                              <!-- <h4>Submission</h4> -->
+                              <h3> Run Submit</h3>
+          <!-- http://www.ncbi.nlm.nih.gov/books/NBK47529/figure/SRA_Quick_Sub_BK.F9/?report=objectonly -->
+                              <h3>Meta information</h3>
+                               <div class="input-group">
+
+                                      <form method = "post" action="/submit">
+
+                                              <label for="platform" class="sr-only">Platform</label>
+                                              <input type="text" class="form-control" id="inputPlatform" placeholder="454 GS FLX Titannium">
+
+                                              <label for="title" class="sr-only">title</label>
+                                              <input type="text" class="form-control" id="inputtitle" placeholder="Publicly viewable information goes here">
+
+                                                <label for="BioProject" class="sr-only">BioProject Accession</label>
+                                              <input type="text" class="form-control" id="inputBioProject" placeholder="SRP000281">              
+
+                                              <label for="BioSample" class="sr-only">BioSample  Accession</label>
+                                              <input type="text" class="form-control" id="inputBioSample" placeholder="SRS084840">
+
+                                              <label for="platform" class="sr-only">Experiemnt Design </label>
+                                              <input type="text" class="form-control" id="inputPlatform" placeholder="Descriptive infomation  for users of your data goes here">
+
+                                              <label for="platform" class="sr-only">Library </label>
+                                                                  <label for="platform" class="sr-only">Library name </label>
+                                                                      <input type="text" class="form-control" id="inputPlatform" placeholder=" ">
+                                                                       <label for="platform" class="sr-only">Strategy </label>
+
+                                                                        <input type="text" class="form-control" id="inputPlatform" placeholder="WXS">
+                                                                      <label for="platform" class="sr-only">Source </label>
+
+                                                                      <input type="text" class="form-control" id="inputPlatform" placeholder="Genomics">
+                                                                      <label for="platform" class="sr-only">Selection </label>
+
+                                                                  <input type="text" class="form-control" id="inputPlatform" placeholder="Random">
+                                      </form>
+
+
+                                </div>
+
+
+          
+                        </div>
 		
 
       </div>
