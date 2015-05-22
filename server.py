@@ -98,15 +98,15 @@ class RunHandler(tornado.web.RequestHandler):
 		self.render("run.html",run_id = run_id,run_count =run_count) 
 class SubmitHandler(tornado.web.RequestHandler):
 	def post(self):
-		platform = self.get_argument(Platform)
-		library_strategy  = self.get_argument(title)
-		bioproject_id = self.get_argument(BioProjectId)
-		biosample_id= self.get_argument(BioSampleId)
-		experiement_design = self.get_argument(experiement_design)
-		library_name = self.get_argument(library_name)
-		Strategy= self.get_argument(Strategy)
-		Selection= self.get_argument(Selection)
-		Source= self.get_argument(Source)
+		platform = self.get_argument('Platform')
+		library_strategy  = self.get_argument('title')
+		bioproject_id = self.get_argument('BioProjectId')
+		biosample_id= self.get_argument('BioSampleId')
+		experiement_design = self.get_argument('experiement_design')
+		library_name = self.get_argument('library_name')
+		Strategy= self.get_argument('Strategy')
+		Selection= self.get_argument('Selection')
+		Source= self.get_argument('Source')
 		print platform 
 		
 	
