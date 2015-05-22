@@ -108,13 +108,14 @@ page5
                                 	var posting = $.post( "/srun",click_var);
                                 	posting.done(function( data ) {
 
-                                        var read1 = data['read_info'][0]
-                                        console.log(read1);
-                                        var read2 = data['read_info'][1]
-                                      $("#read1").empty().append(read1);
-                                      $("#read2").empty().append(read2);
-                                }
-		});
+                                                  var read1 = data['read_info'][0]
+                                                  console.log(read1);
+                                                  var read2 = data['read_info'][1]
+                                                $("#read1").empty().append(read1);
+                                                $("#read2").empty().append(read2);
+                                         });
+                             }
+		
                 );
                    $(function() {
 
