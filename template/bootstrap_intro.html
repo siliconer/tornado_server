@@ -59,6 +59,8 @@
                   <li role="presentation"  class="active" ><a href="#home" id="home-tab" aria-controls="home" role="tab" data-toggle="tab">Home</a></li>
                   <li role="presentation"   ><a href="#browse"  id= "browse-tab" aria-controls="browse" role="tab" data-toggle="tab">Browse</a></li>
                   <li role="presentation" ><a href="#search"  id= "search-tab" aria-controls="search" role="tab" data-toggle="tab">Search</a></li>
+	                 <li role="presentation" ><a href="#submit"  id= "submit-tab" aria-controls="submit" role="tab" data-toggle="tab">Submit</a></li>
+
                 </ul>
                 <!-- Tab panes -->
                 <div class="tab-content">
@@ -113,7 +115,7 @@
 
 
                 <!-- //http://www.ncbi.nlm.nih.gov/books/NBK47529/ -->
-                  <div role="tabpanel" class="tab-pane active" id="Submit" aria-labelledby ="submit-tab">
+                  <div role="tabpanel" class="tab-pane" id="submit" aria-labelledby ="submit-tab">
                               <h3> Submit Data  </h3>
                               <!-- <h4>Submission</h4> -->
                               <h3> Run Submit</h3>
@@ -123,10 +125,11 @@
 
                                       <form method = "post" action="/submit">
 
-                                              <label for="platform" class="sr-only">Platform</label>
+                                              <label for="platform" class="col-sm-2 control-label">Platform</label>
+					<div class="col-sm-10">
                                               <input type="text" class="form-control" id="inputPlatform" placeholder="454 GS FLX Titannium">
-
-                                              <label for="title" class="sr-only">title</label>
+					</div>
+                                              <label for="title" >title</label>
                                               <input type="text" class="form-control" id="inputtitle" placeholder="Publicly viewable information goes here">
 
                                                 <label for="BioProject" class="sr-only">BioProject Accession</label>
@@ -150,6 +153,9 @@
                                                                       <label for="platform" class="sr-only">Selection </label>
 
                                                                   <input type="text" class="form-control" id="inputPlatform" placeholder="Random">
+
+					            <input type="submit" value="Submit">
+
                                       </form>
 
 
