@@ -84,7 +84,7 @@
                    $(function() {
  
                       $("#page_slider").bs_pagination({
-                          totalPages: {{row_count}}
+                          totalPages: {{run_count}}
                         });
                        
                       });
@@ -92,9 +92,9 @@
                     //     onLoad: function(event, data) {
                     //             tbl  =  document.getElementById('tableID');
                     //             currentPage = data.currentPage
-                    //             row_length = tbl.row.length
+                    //             row_length = tbl.rows.length
                     //             for (i =0;i<row_length ;i++ ) {
-                    //                   tbl.rows[i].cells[0].innerHTML = currentPage*10 +  tbl.rows[i].cells[0].innerHTML ;
+                    //                   tbl.rows[i].cells[0].innerHTML = str(currentPage*10 +  int(tbl.rows[i].cells[0].innerHTML)) ;
                     //             }
 
                     //       // your code here e.g.
@@ -103,12 +103,14 @@
                     //   });
 
                    $("#page_slider").bs_pagination({
+			run_id = {{run_id}}
                         onChangePage: function(event, data) {
                                 tbl  =  document.getElementById('tableID');
                                 currentPage = data.currentPage
-                                row_length = tbl.row.length
+                                row_length = tbl.rows.length
                                 for (i =0;i<row_length ;i++ ) {
-                                      tbl.rows[i].cells[0].innerHTML = currentPage*10 +  tbl.rows[i].cells[0].innerHTML ;
+				      row_index = tbl.rows[i].cells[0].innerHTML
+                                      tbl.rows[i].cells[0].innerHTML =currentPage*10 +  parseInt(row_index.split(''),10) ;
                                 }
 
                           // your code here e.g.
