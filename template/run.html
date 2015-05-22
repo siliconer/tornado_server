@@ -47,12 +47,6 @@
               <div id="page_slider"></div>
              <!-- //http://www.dotnetlearners.com/javascript/find%20table%20cell%20value%20on%20cell%20(table)%20click%20using%20javascript.aspx -->
                         <table id="tableID" class="table" border="1">
-                          <tr>
-                             <td>1757</td>
-                          </tr>
-                          <tr>
-                             <td>1758</td>
-                          </tr>
                         </table>​
              
                    
@@ -62,6 +56,32 @@
                         <div id="result"></div>
               </div>
                    <script language="javascript">
+
+                   function tableCreate(){
+                            // var body = document.body,
+                            tbl  =  document.getElementById('tableID').tBodies[0];
+                            // tbl.style.width  = '50px';
+                            tbl.style.border = "1px solid black";
+
+                            for(var i = 0; i < 10; i++){
+                                var tr = tbl.insertRow();
+                                for(var j = 0; j < 1; j++){
+                                          if(i == 10){
+                                              break;
+                                          } else {
+                                              var td = tr.insertCell();
+                                        
+                                              td.appendChild(document.createTextNode(i));
+                                              td.style.border = "1px solid black";
+                                              // if(i == 1 && j == 1){
+                                              //     td.setAttribute('rowSpan', '2');
+                                              // }
+                                          }
+                                  }
+                            }
+                            // body.appendChild(tbl);
+                    }
+
                    $(function() {
  
                       $("#page_slider").bs_pagination({
@@ -82,9 +102,7 @@
                         $('#tableID').click(function(e){
                               alert($(e.target).text());   
                               click_var = $(e.target).text();
- //http://api.jquery.com/jquery.post/
-                                // alert(e.target.parentNode.innerText); //Current row.
-
+                             //http://api.jquery.com/jquery.post/
                                 // $.post( "/srun", click_var,function( data ) {
                                 // }); 
 				console.log(click_var)
