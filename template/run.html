@@ -19,6 +19,10 @@
 <!-- <script src="js/bootstrap-table.min.js"></script> -->
 <script src="/static/js/bootstrap-table.js"></script>
 
+
+<link rel="stylesheet" type="text/css" href="/static/css/jquery.bs_pagination.min.css">
+<script type="text/javascript" src="/static/js/jquery.bs_pagination.min.js"></script>
+<script type="text/javascript" src="/static/js/bs_pagination/localization/en.min.js"></script>
 <!-- Latest compiled and minified CSS -->
 
 <!-- Latest compiled and minified JavaScript -->
@@ -40,6 +44,7 @@
     <h2>SRR Read Page</h2>
     <div class="row">
               <div class="col-md-4">
+              <div id="page_slider"></div>
              <!-- //http://www.dotnetlearners.com/javascript/find%20table%20cell%20value%20on%20cell%20(table)%20click%20using%20javascript.aspx -->
                         <table id="tableID" class="table" border="1">
                           <tr>
@@ -53,10 +58,26 @@
                    
 
               </div>
-              <div class="col-md-8">
+              <div class="col-md-4">
                         <div id="result"></div>
               </div>
                    <script language="javascript">
+                   $(function() {
+ 
+                      $("#page_slider").bs_pagination({
+                          totalPages: 10
+                        });
+                       
+                      });
+
+                   $("#page_slider").bs_pagination({
+                        onChangePage: function(event, data) {
+                          // your code here e.g.
+                          console.log('Current page is: ' + currentPage.col + '. ' + rowsPerPage + ' are displayed per page.');
+                        }
+                      });
+
+                   // get read info 
 
                         $('#tableID').click(function(e){
                               alert($(e.target).text());   
