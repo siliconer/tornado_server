@@ -46,6 +46,7 @@
 			</form>
 		</div>
                 <h3>ID Page</h3>
+		<br/>
                 <p><hr></p>
                  <p></p>
                 <p><b>{{experiment_id}}</b>    <b>{{title}}</b></p>
@@ -65,7 +66,9 @@
                  </ul>
                 </div>
                 <p><b>Platform</b>: {{instrument_model}}</p>
-                <p><b>Run_Id</b>:{{run_id}}</p>
+                <p><b>Run_Id</b>:
+			<a href="/run/{{run_id}}">		
+			{{run_id}}</a></p>
        </div>
 </body>
 </html>
