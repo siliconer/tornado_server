@@ -41,7 +41,7 @@
     <div class="row">
               <div class="col-md-4">
              <!-- //http://www.dotnetlearners.com/javascript/find%20table%20cell%20value%20on%20cell%20(table)%20click%20using%20javascript.aspx -->
-                        <table id="tableID" onclick="myFun(event)" border="1">
+                        <table id="tableID" class="table" border="1">
                           <tr>
                              <td>1757</td>
                           </tr>
@@ -66,12 +66,14 @@
 
                                 // $.post( "/srun", click_var,function( data ) {
                                 // }); 
+				console.log(click_var)
+                                var posting = $.post( "/srun",click_var); 
+                                posting.done(function( data ) {
 
-                                var getting = $.post( "/srun", click_var); 
-                 
-                                getting.done(function( data ) {
+				console.log("data")	;
+				console.log(data['read_info']);
                                   // var content = $( data ).find( "#content" );
-                                      $( "#result" ).empty().append( data );
+                                      $( "#result" ).empty().append( data['read_info'] );
                                 }); 
 
 

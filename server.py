@@ -69,12 +69,27 @@ class  IdHandler(tornado.web.RequestHandler):
 		# http://192.168.0.108:8983/solr/sra_collection_shard1_replica1/select?q=*ERX081395*&wt=json&indent=true
 
 class  SRRRunHandler(tornado.web.RequestHandler):
-	def get(self):
-		input_word=self.get_argument('text')
-		read_info  = parse_stargate(input_word)
+	def post(self):
+		print 'srr'
+		print str(self.request.body)+' a'
+#		input_word=self.get_argument('td')
+		input_word = tornado.escape.json_decode(self.request.body)
+		print input_word
+		read_info  = parse_stargate(str(input_word))
+		#self.write('read_info')
+		self.write({'read_info':read_info})
+		self.flush()
+		self.finish()
+
 		print read_info
-
-
+#	def get(self,input_word):
+#		print 'get'
+#		print self.request
+#		print input_word[1:]
+		#read_info = parse_stargate(input_word[1:])
+		#print read_info
+		
+		
 class RunHandler(tornado.web.RequestHandler):
 	def get(self,input_word):
 		print 'run'
@@ -87,6 +102,7 @@ def main():
 		(r'/search',SearchHandler),
 		(r'/wrap',WrappHandler),
 		(r'/id/(\w+)',IdHandler),
+		(r'/srun',SRRRunHandler),
 		(r'/srun/(\w+)',SRRRunHandler),
 		(r'/run/(\w+)',RunHandler)] ,
    	    	template_path=os.path.join(os.path.dirname(__file__),"template"),
