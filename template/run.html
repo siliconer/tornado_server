@@ -41,7 +41,7 @@
     <!-- Include all compiled plugins (below), or include individual files as needed -->
   </head>
   <body>
-    <h2>SRR Read Page</h2>
+    <h2>SRR Read Page  <div class="run_id">{{run_id}}<div></h2>
     <div class="row">
               <div class="col-md-4">
               <div id="page_slider"></div>
@@ -84,15 +84,35 @@
                    $(function() {
  
                       $("#page_slider").bs_pagination({
-                          totalPages: 10
+                          totalPages: {{row_count}}
                         });
                        
                       });
+                    // $("#page_slider").bs_pagination({
+                    //     onLoad: function(event, data) {
+                    //             tbl  =  document.getElementById('tableID');
+                    //             currentPage = data.currentPage
+                    //             row_length = tbl.row.length
+                    //             for (i =0;i<row_length ;i++ ) {
+                    //                   tbl.rows[i].cells[0].innerHTML = currentPage*10 +  tbl.rows[i].cells[0].innerHTML ;
+                    //             }
+
+                    //       // your code here e.g.
+                    //             // console.log('Current page is: ' + currentPage.col + '. ' + rowsPerPage + ' are displayed per page.');
+                    //     }
+                    //   });
 
                    $("#page_slider").bs_pagination({
                         onChangePage: function(event, data) {
+                                tbl  =  document.getElementById('tableID');
+                                currentPage = data.currentPage
+                                row_length = tbl.row.length
+                                for (i =0;i<row_length ;i++ ) {
+                                      tbl.rows[i].cells[0].innerHTML = currentPage*10 +  tbl.rows[i].cells[0].innerHTML ;
+                                }
+
                           // your code here e.g.
-                          console.log('Current page is: ' + currentPage.col + '. ' + rowsPerPage + ' are displayed per page.');
+                                // console.log('Current page is: ' + currentPage.col + '. ' + rowsPerPage + ' are displayed per page.');
                         }
                       });
 

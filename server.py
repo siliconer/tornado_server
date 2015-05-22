@@ -93,7 +93,7 @@ class  SRRRunHandler(tornado.web.RequestHandler):
 class RunHandler(tornado.web.RequestHandler):
 	def get(self,input_word):
 		print 'run'
-		self.render('run.html')
+		self.render('run.html',run_id =  SRR1514737,run_count = 120)
 
 def main():
 	tornado.options.parse_command_line()
