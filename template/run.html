@@ -69,7 +69,7 @@
                                                           break;
                                                       } else {
                                                           var td = tr.insertCell();
-                                                    
+                                                          row_index =  run_id.toString()+'.'+i.toString()
                                                           td.appendChild(document.createTextNode(i));
                                                           td.style.border = "1px solid black";
                                                           // if(i == 1 && j == 1){
@@ -110,7 +110,7 @@
                                 row_length = tbl.rows.length
                                 for (i =0;i<row_length ;i++ ) {
 				      row_index = tbl.rows[i].cells[0].innerHTML
-                                      tbl.rows[i].cells[0].innerHTML =currentPage*10 +  parseInt(row_index.split(''),10) ;
+                                      tbl.rows[i].cells[0].innerHTML = run_id.toString()+'.'+(currentPage*10 +  parseInt(row_index.split('.')[1],10) ).toString();
                                 }
 
                           // your code here e.g.
