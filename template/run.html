@@ -56,32 +56,32 @@
                         <div id="result"></div>
               </div>
                    <script language="javascript">
+                $(document).ready(
+                               function tableCreate(){
+                                        // var body = document.body,
+                                        tbl  =  document.getElementById('tableID').tBodies[0];
+                                        // tbl.style.width  = '50px';
+                                        tbl.style.border = "1px solid black";
 
-                   function tableCreate(){
-                            // var body = document.body,
-                            tbl  =  document.getElementById('tableID').tBodies[0];
-                            // tbl.style.width  = '50px';
-                            tbl.style.border = "1px solid black";
-
-                            for(var i = 0; i < 10; i++){
-                                var tr = tbl.insertRow();
-                                for(var j = 0; j < 1; j++){
-                                          if(i == 10){
-                                              break;
-                                          } else {
-                                              var td = tr.insertCell();
-                                        
-                                              td.appendChild(document.createTextNode(i));
-                                              td.style.border = "1px solid black";
-                                              // if(i == 1 && j == 1){
-                                              //     td.setAttribute('rowSpan', '2');
-                                              // }
-                                          }
-                                  }
-                            }
-                            // body.appendChild(tbl);
-                    }
-
+                                        for(var i = 0; i < 10; i++){
+                                            var tr = tbl.insertRow();
+                                            for(var j = 0; j < 1; j++){
+                                                      if(i == 10){
+                                                          break;
+                                                      } else {
+                                                          var td = tr.insertCell();
+                                                    
+                                                          td.appendChild(document.createTextNode(i));
+                                                          td.style.border = "1px solid black";
+                                                          // if(i == 1 && j == 1){
+                                                          //     td.setAttribute('rowSpan', '2');
+                                                          // }
+                                                      }
+                                              }
+                                        }
+                                        // body.appendChild(tbl);
+                                }
+                );
                    $(function() {
  
                       $("#page_slider").bs_pagination({
