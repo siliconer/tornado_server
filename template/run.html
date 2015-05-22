@@ -43,7 +43,7 @@
   <body>
     <h2>SRR Read Page  <div class="run_id">{{run_id}}<div></h2>
     <div class="row">
-              <div class="col-md-3">
+              <div class="col-md-4">
               <div id="page_slider"></div>
              <!-- //http://www.dotnetlearners.com/javascript/find%20table%20cell%20value%20on%20cell%20(table)%20click%20using%20javascript.aspx -->
                         <table id="tableID" class="table" border="1">
@@ -60,13 +60,6 @@
   </div>
   <div id="read1" class="panel-body" style="word-wrap:break-word">
     Panel content
-    page 1 
-	aapage2
-	<br/>
-	<br/>
-	page 3
-	<br/>
-page5
   </div>
 </div>
 <div class="panel panel-default" style="word-wrap:break-word">
@@ -87,7 +80,7 @@ page5
                                         tbl  =  document.getElementById('tableID');
                                         // tbl.style.width  = '50px';
 					run_id = document.querySelectorAll(".run_id")[0].childNodes[0].nodeValue
-                                        for(var i = 0; i < 10; i++){
+                                        for(var i =1 ; i <= 10; i++){
                                             var tr = tbl.insertRow();
                                             for(var j = 0; j < 1; j++){
                                                       if(i == 10){
@@ -104,11 +97,11 @@ page5
                                              }
                                         }
 			        	run_id = document.querySelectorAll(".run_id")[0].childNodes[0].nodeValue
-                                	click_var = run_id + '.0';
-                                	var posting = $.post( "/srun",click_var);
-                                	posting.done(function( data ) {
+                                	click_var = run_id + '.1';
+        	                       	var posting = $.post( "/srun",click_var);
+               		               	posting.done(function( data ) {
 
-                                                  var read1 = data['read_info'][0]
+                                               var read1 = data['read_info'][0]
                                                   console.log(read1);
                                                   var read2 = data['read_info'][1]
                                                 $("#read1").empty().append(read1);
