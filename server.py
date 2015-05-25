@@ -13,6 +13,9 @@ import simplejson
 from stargate import parse_stargate
 from tornado.options import define,options
 from stargate_post import stargate
+from stargate_post import table_length
+
+
 define("port",default=8888,help="run on th given port",type=int)
 
 class  IndexHandler(tornado.web.RequestHandler):
@@ -109,15 +112,16 @@ class SubmitHandler(tornado.web.RequestHandler):
 		Selection= self.get_argument('Selection')
 		Source= self.get_argument('Source')
 		print platform 
-		stargate('SRAtest','INSTRUMENT_MODEL',platform)
-		stargate('SRAtest','TITLE',title)
-		stargate('SRAtest','STUDY_REF_BIO_PROJECT_ID',bioproject_id)
-		stargate('SRAtest','SAMPLE_ID',biosample_id)
-		stargate('SRAtest','DESIGN_DESCRIPTION',experiement_design)
-		stargate('SRAtest','LIBRARY_DESCRIPTOR:LIBRARY_NAME',library_name)
-		stargate('SRAtest','LIBRARY_DESCRIPTOR:LIBRARY_STRATEGY',Strategy)
-		stargate('SRAtest','LIBRARY_DESCRIPTOR:LIBRARY_SELECTION',Selection)
-		stargate('SRAtest','LIBRARY_DESCRIPTOR:LIBRARY_SOURCE',Source)
+		added_row_num = table_length('SRAtest','TITLE')
+		stargate('SRAtest','INSTRUMENT_MODEL',platform,added_row_num)
+		stargate('SRAtest','TITLE',title,added_row_num)
+		stargate('SRAtest','STUDY_REF_BIO_PROJECT_ID',bioproject_id,added_row_num)
+		stargate('SRAtest','SAMPLE_ID',biosample_id,added_row_num)
+		stargate('SRAtest','DESIGN_DESCRIPTION',experiement_design,added_row_num)
+		stargate('SRAtest','LIBRARY_DESCRIPTOR:LIBRARY_NAME',library_name,added_row_num)
+		stargate('SRAtest','LIBRARY_DESCRIPTOR:LIBRARY_STRATEGY',Strategy,added_row_num)
+		stargate('SRAtest','LIBRARY_DESCRIPTOR:LIBRARY_SELECTION',Selection,added_row_num)
+		stargate('SRAtest','LIBRARY_DESCRIPTOR:LIBRARY_SOURCE',Source,added_row_num)
 		
 		self.write("write success")	
 
