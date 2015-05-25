@@ -56,6 +56,19 @@ class  IdHandler(tornado.web.RequestHandler):
 		response = simplejson.load(urlopen(query_url))
 		json_body = response['response']['docs'][0]
 		experiment_id=json_body['experiment_id']
+		title = ''
+		sample_id = ''
+		library_selection = ''
+		design_description = ''
+		study_bioproject_id = ''
+		library_name = ''
+		library_source =''
+		library_strategy = ''
+		run_id = ''
+		submitter_id = ''
+		instrument_model = ''
+		study_ref = ''
+		
 		if 'title' in json_body:
 			title = json_body['title']
 		if  'sample_id' in json_body:
