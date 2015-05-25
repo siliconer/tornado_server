@@ -12,6 +12,7 @@ from urllib2 import *
 import simplejson
 from stargate import parse_stargate
 from tornado.options import define,options
+from stargate_post import stargate
 define("port",default=8888,help="run on th given port",type=int)
 
 class  IndexHandler(tornado.web.RequestHandler):
@@ -108,8 +109,8 @@ class SubmitHandler(tornado.web.RequestHandler):
 		Selection= self.get_argument('Selection')
 		Source= self.get_argument('Source')
 		print platform 
-		
-	
+		stargate('SRAtest','INSTRUMENT_MODEL',platform)
+		self.write("write success")	
 
 		# pass
 
