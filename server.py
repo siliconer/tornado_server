@@ -112,6 +112,7 @@ class SubmitHandler(tornado.web.RequestHandler):
 		Strategy= self.get_argument('Strategy')
 		Selection= self.get_argument('Selection')
 		Source= self.get_argument('Source')
+		run_id = self.get_argument('run_id')
 		print platform 
 		added_row_num = table_length('SRAtest','TITLE')
 		stargate('SRAtest','EXPERIMENT_ID',experiment_id,added_row_num)
@@ -124,7 +125,8 @@ class SubmitHandler(tornado.web.RequestHandler):
 		stargate('SRAtest','LIBRARY_DESCRIPTOR:LIBRARY_STRATEGY',Strategy,added_row_num)
 		stargate('SRAtest','LIBRARY_DESCRIPTOR:LIBRARY_SELECTION',Selection,added_row_num)
 		stargate('SRAtest','LIBRARY_DESCRIPTOR:LIBRARY_SOURCE',Source,added_row_num)
-		
+		stargate('SRAtest','RUN_ID',run_id,added_row_num)
+
 		self.write("write success")	
 
 		# pass
