@@ -7,6 +7,7 @@ from commands import *
 
 from starbase import Connection 
 
+
 def  stargate(tablename,column_name,insert_data):
 	c = Connection()
 	c = Connection(host='127.0.0.1', port=7060)

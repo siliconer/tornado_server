@@ -100,7 +100,7 @@ class RunHandler(tornado.web.RequestHandler):
 class SubmitHandler(tornado.web.RequestHandler):
 	def post(self):
 		platform = self.get_argument('Platform')
-		library_strategy  = self.get_argument('title')
+		title  = self.get_argument('title')
 		bioproject_id = self.get_argument('BioProjectId')
 		biosample_id= self.get_argument('BioSampleId')
 		experiement_design = self.get_argument('experiement_design')
@@ -110,6 +110,15 @@ class SubmitHandler(tornado.web.RequestHandler):
 		Source= self.get_argument('Source')
 		print platform 
 		stargate('SRAtest','INSTRUMENT_MODEL',platform)
+		stargate('SRAtest','TITLE',title)
+		stargate('SRAtest','STUDY_REF_BIO_PROJECT_ID',bioproject_id)
+		stargate('SRAtest','SAMPLE_ID',biosample_id)
+		stargate('SRAtest','DESIGN_DESCRIPTION',experiement_design)
+		stargate('SRAtest','LIBRARY_DESCRIPTOR:LIBRARY_NAME',library_name)
+		stargate('SRAtest','LIBRARY_DESCRIPTOR:LIBRARY_STRATEGY',Strategy)
+		stargate('SRAtest','LIBRARY_DESCRIPTOR:LIBRARY_SELECTION',Selection)
+		stargate('SRAtest','LIBRARY_DESCRIPTOR:LIBRARY_SOURCE',Source)
+		
 		self.write("write success")	
 
 		# pass
