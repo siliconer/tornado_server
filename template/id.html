@@ -49,7 +49,7 @@
 		<br/>
                 <p><hr></p>
                  <p></p>
-                <p><b>{{experiment_id}}</b>    <b>{{title}}</b></p>
+                <p><b style="color:#642a8f">{{experiment_id}}</b>    <b>{{title}}</b></p>
                 <p><b>Accession</b>:{{experiment_id}}</p>
                 <p><b>Experiment design</b>:{{design_description}}</p>
                 <p><b>Submitted by</b>:{{submitter_id}}</p>
@@ -60,13 +60,13 @@
                 <p><b>Library:</b></p>
                 <ul>
                              <li style="color:#006400">Library name:<span style="color:black"> {{library_name}}</span></li>
-                             <li>Library source: {{library_source}}</li>
-                             <li>Library strategy: {{library_strategy}}</li>
-                             <li>library selection: {{library_selection}}</li>
+                             <li style="color:#006400">Library source:<span style="color:black">  {{library_source}}</span></li>
+                             <li style="color:#006400">Library strategy:<span style="color:black"> {{library_strategy}}</span></li>
+                             <li style="color:#006400">library selection:<span style="color:black"> {{library_selection}}</span></li>
                  </ul>
 
                 </div>
-                <p><b>Platform</b>: {{instrument_model}}</p>
+                <p><b style="color:#006400">Platform</b>: {{instrument_model}}</p>
                 <p><b>Run_Id</b>:
 			<a href="/run/{{run_id}}">		
 			{{run_id}}</a></p>
