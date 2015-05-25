@@ -32,8 +32,18 @@ class  SearchHandler(tornado.web.RequestHandler):
 		response = simplejson.load(urlopen(query_url))
 		print response
 		out_file = os.getcwd() + '/static/search.json'
+		data_list =   response['response']['docs']
+		prev_experiment_id = 0 
+		print len(data_list)
+		for i in range(0,len(data_list)):
+			experiment_id =  data_list[i]['experiment_id']
+			if experiment_id == prev_experiment_id:
+				data_list.remove(data_list[i])
+			else:
+				prev_experiment_id = experiment_id	
+		response['response']['docs'] = data_list
 		with open(out_file,"w") as outfile:
-			json.dump(response,outfile,indent=4)
+				json.dump(response,outfile,indent=4)
 		#file = open(out_file,"w")
        		#file.write(str(response))
 		# print reponse
@@ -156,7 +166,21 @@ class SubmitHandler(tornado.web.RequestHandler):
 
 		# pass
 
-
+def rid_duplicate():
+	file  = os.getcwd()+ '/static/search.json'
+	json_data = open(file)
+	# json_body = response['response']['docs'][0]
+	data = json.load(json_data)
+	data_list =   data['response']['docs']
+	prev_experiment_id = 0 
+	print len(data_list)
+	for i in range(0,len(data_list)):
+		experiment_id =  data_list[i]['experiment_id']
+		if experiment_id == prev_experiment_id:
+			data_list.remove(data_list[i])
+		else:
+			prev_experiment_id = experiment_id
+	json.dump(data_list,json_data)
 
 def main():
 	tornado.options.parse_command_line()
