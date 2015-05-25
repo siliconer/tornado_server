@@ -102,6 +102,7 @@ class RunHandler(tornado.web.RequestHandler):
 		self.render("run.html",run_id = run_id,run_count =run_count) 
 class SubmitHandler(tornado.web.RequestHandler):
 	def post(self):
+		experiment_id = self.get_argument('experiment_id')
 		platform = self.get_argument('Platform')
 		title  = self.get_argument('title')
 		bioproject_id = self.get_argument('BioProjectId')
@@ -113,6 +114,7 @@ class SubmitHandler(tornado.web.RequestHandler):
 		Source= self.get_argument('Source')
 		print platform 
 		added_row_num = table_length('SRAtest','TITLE')
+		stargate('SRAtest','EXPERIMENT_ID',experiment_id,added_row_num)
 		stargate('SRAtest','INSTRUMENT_MODEL',platform,added_row_num)
 		stargate('SRAtest','TITLE',title,added_row_num)
 		stargate('SRAtest','STUDY_REF_BIO_PROJECT_ID',bioproject_id,added_row_num)
