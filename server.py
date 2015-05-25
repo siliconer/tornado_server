@@ -182,6 +182,8 @@ def rid_duplicate():
 			prev_experiment_id = experiment_id
 	json.dump(data_list,json_data)
 
+class UploadHandler() :
+	
 def main():
 	tornado.options.parse_command_line()
 	application = tornado.web.Application(
@@ -192,7 +194,8 @@ def main():
 		(r'/srun',SRRRunHandler),
 		(r'/srun/(\w+)',SRRRunHandler),
 		(r'/run/(\w+)',RunHandler),
-		(r'/submit',SubmitHandler)] ,
+		(r'/submit',SubmitHandler),
+		(r'/upload',UploadHandler)] ,
    	    	template_path=os.path.join(os.path.dirname(__file__),"template"),
   	    	static_path=os.path.join(os.path.dirname(__file__),"static"),	
   	    	debug = True

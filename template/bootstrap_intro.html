@@ -128,7 +128,7 @@
 
                                                         <!-- Standar Form -->
                                                                             <h4>Select files from your computer</h4>
-                                                                            <form action="" method="post" enctype="multipart/form-data" id="js-upload-form">
+                                                                            <form action="/upload" method="post" enctype="multipart/form-data" id="js-upload-form">
                                                                                         <div class="form-inline">
                                                                                           <div class="form-group">
                                                                                             <input type="file" name="files[]" id="js-upload-files" multiple>
@@ -137,7 +137,7 @@
                                                                                         </div>
                                                                             </form>
 
-                                                        <!-- Drop Zone -->
+                                                        <!-- Drop Zone --> 
                                       <!--                   <h4>Or drag and drop files below</h4>
                                                         <div class="upload-drop-zone" id="drop-zone">
                                                           Just drag and drop files here
@@ -247,7 +247,6 @@
               uploadForm.addEventListener('submit', function(e) {
                   var uploadFiles = document.getElementById('js-upload-files').files;
                   e.preventDefault()
-
                   startUpload(uploadFiles)
               })
 
